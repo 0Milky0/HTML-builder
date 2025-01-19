@@ -1,12 +1,6 @@
 const fs = require('fs');
 const path = require('node:path');
 
-// try {
-//   const files = fs.readdir(path.join(__dirname, 'secret-folder'));
-//   for (const file of files) console.log(file);
-// } catch (err) {
-//   console.error(err);
-// }
 fs.readdir(path.join(__dirname, 'secret-folder'), (err, files) => {
   for (const file of files) {
     fs.stat(path.join(__dirname, 'secret-folder', file), (err, stat) => {
