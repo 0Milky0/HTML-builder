@@ -13,6 +13,16 @@ fs.readdir(path.join(__dirname, 'files'), (err, files) => {
       callback,
     );
   }
+
+  fs.readdir(path.join(__dirname, 'files-copy'), (err, copyFiles) => {
+    for (const file of copyFiles) {
+      if (!files.includes(file))
+        fs.unlink(path.join(__dirname, 'files-copy', file), (err) => {
+          if (err) throw err;
+          console.log('file was deleted from files-copy dir');
+        });
+    }
+  });
 });
 
 function callback(err) {
